@@ -10,8 +10,9 @@ const getTodos = (callback)=>{
 
         if(request.readyState==4 && request.status===200)
         {
+            //callback trigered when the condition passed (err equals to undefined and Data equals to Response of Json data)
             callback(undefined , request.responseText)
-            console.log(request ,request.readyState);
+            
         }
         else if(request.readyState==4){
             callback('could not fetch data', undefined);
