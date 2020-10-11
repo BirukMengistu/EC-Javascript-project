@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="simple-helper.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Helper.onClick('showExchangeRate', showExchangeRates);
+            Helper.onClick('convert', processExchange);
+            fetch('https://v6.exchangerate-api.com/v6/8ae1329be84d58d8e81d5547/latest/SEK')
+                .then(response => response.json())
+                .then(function(data) {
+                    alert(data.time_last_update_utc);
+                    loadCountries(data);
+                })
+                .catch(error => alert(error));
+        });
+        let Countries = Array({
+            "name": "Sverige",
+            "currency": "SEK",
+        }, {
+            "name": "Finland",
+            "currency": "EUR",
+        }, {
+            "name": "USA",
+            "currency": "USD",
+        }, {
+            "name": "Storbritaniene",
+            "currency": "GBP",
+        });
+
+        function loadCountries(valutor) {
+            // select all countries
+            for (let i = 0; i < Countries.length; i++) {
+                Countries[i].exchangeRate = valutor.conversion_rates[Countries[0].currency] / valutor.conversion_rates[Countries[i].currency];
+            }
+            let dropbox = '';
+            for (let i = 0; i < Countries.length; i++) {
+                dropbox += '<option value ="' + i + '">' + Countries[i].currency + '</option>';
+
+            }
+            dropbox += '</select>';
+            Helper.setHtml('change-from', dropbox);
+            Helper.setHtml('change-to', dropbox);
+        }
+
+        function showExchangeRates() {
+            let html = '<table style="width: 400px">';
+            html += '<tr><td>Land</td><td>Valuta</td><td>Kurs</td></tr>';
+            for (let i = 0; i < Countries.length; i++) {
+                html += '<tr>';
+                html += '<td>' + Countries[i].name + '</td>';
+                html += '<td>' + Countries[i].currency + '</td>';
+                html += '<td>' + Number(Countries[i].exchangeRate).toFixed(2) + '</td>';
+                html += '</tr>';
+            }
+            html += '</table>';
+            Helper.setHtml('showExchangeRate', html);
+        }
+
+        function processExchange() {
+            let indexForm = document.getElementById('change-from').value;
+            alert(indexForm);
+            let indexTo = document.getElementById('change-to').value;
+            alert(indexTo);
+            let amount = Helper.getValue('Enter-amount');
+            alert(amount);
+            let newAmount = Number(amount) * Number(Countries[indexForm].exchangeRate) / Number(Countries[indexTo].exchangeRate);
+            alert(newAmount);
+            Helper.setValue('get-amount', newAmount);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <H1>lands</H1>
+        <div id="country-list"></div>
+        <div id="select-country">
+            <input type="text" id="Enter-amount" placeholder="Enter Amount">
+            <select id="change-from">
+        </select>
+            <br>
+            <input type="text" id="get-amount">
+            <select id="change-to">
+        </select>
+            <br>
+            <button id="convert">
+            convert
+           </button>
+            <div id='showRates'>
+                <button id="showExchangeRate"> ShowExchangeRate</button>
+            </div>
+        </div>
+        <button id="processExchange"></button>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
