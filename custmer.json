@@ -1,0 +1,51 @@
+[{
+        "Kundnr": "001",
+        "Personnr_id": "880103-2011",
+        "Namn": "Tomma",
+        "Adress": "solna 89",
+        "Postnr": "15345",
+        "Ort": "solna",
+        "Mobil": "0704788945",
+        "E-post": "bk@gmail.com",
+        "Pin-kod": "1234",
+        "Lösenord": "8784fk"
+    },
+    {
+        "Kundnr": "002",
+        "Personnr_id": "891010-1401",
+        "Namn": "Bomma",
+        "Adress": "hudding 89",
+        "Postnr": "15345",
+        "Ort": "solna",
+        "Mobil": "0704788945",
+        "E-post": "dt@gmail.com",
+        "Pin-kod": "1234",
+        "Lösenord": "8784_fk"
+    },
+    {
+        "Kundnr": "001",
+        "Personnr_id": "870610-1201",
+        "Namn": "Erikson",
+        "Adress": "solna 4",
+        "Postnr": "15245",
+        "Ort": "solna",
+        "Mobil": "0704788945",
+        "E-post": "Ek@gmail.com",
+        "Pin-kod": "1034",
+        "Lösenord": "87_44f@k"
+    },
+    {
+        "Kundnr": "012",
+        "Personnr_id": "870610-1201",
+        "Namn": "Johanna",
+        "Adress": "stockholm 4",
+        "Postnr": "1245",
+        "Ort": "stockholm",
+        "Mobil": "0718700945",
+        "E-post": "Jo@gmail.com",
+        "Pin-kod": "1200",
+        "Lösenord": "8r-4@j_"
+    }
+
+
+]
